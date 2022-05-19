@@ -9,7 +9,7 @@ namespace AddressBook
     public class AddDetails
     {
         public static List<User> Person = new List<User>();
-        public class User 
+        public class User
         {
             public string FirstName { get; set; }
             public string LastName { get; set; }
@@ -54,7 +54,6 @@ namespace AddressBook
         {
             Console.WriteLine("First Name: " + per.FirstName);
             Console.WriteLine("Last Name: " + per.LastName);
-            Console.WriteLine("Phone Number: " + per.PhoneNumber);
             Console.WriteLine("Address : " + per.Address);
             Console.WriteLine("City : " + per.City);
             Console.WriteLine("State : " + per.State);
@@ -63,6 +62,70 @@ namespace AddressBook
             Console.WriteLine("EmailId: " + per.Email);
             Console.WriteLine("-------------------------------------------");
         }
+        public static void EditInfo()
+        {
+            Console.WriteLine("Enter the contact to modify:");
+            string edit = Console.ReadLine();
+            foreach (var per in Person)
+            {
+                if (per.FirstName == edit)
+                {
+                    while (true)
+                    {
+                        Console.WriteLine("Enter the option to modify the property: ");
+                        Console.WriteLine("Enter 1 to Change First name ");
+                        Console.WriteLine("Enter 2 to Change Last name ");
+                        Console.WriteLine("Enter 3 to Change Address ");
+                        Console.WriteLine("Enter 4 to Change City ");
+                        Console.WriteLine("Enter 5 to Change State ");
+                        Console.WriteLine("Enter 6 to Change Zipcode ");
+                        Console.WriteLine("Enter 7 to Change Phone Number ");
+                        Console.WriteLine("Enter 8 to Change Email ID ");
+                        Console.WriteLine("Enter 9 to Exit ");
+                        int Check = Convert.ToInt32(Console.ReadLine());
+                        switch (Check)
+                        {
+                            case 1:
+                                Console.WriteLine("Enter the New First Name: ");
+                                per.FirstName = Console.ReadLine();
+                                break;
+                            case 2:
+                                Console.WriteLine("Enter the New Last Name: ");
+                                per.LastName = Console.ReadLine();
+                                break;
+                            case 3:
+                                Console.WriteLine("Enter the New Address: ");
+                                per.Address = Console.ReadLine();
+                                break;
+                            case 4:
+                                Console.WriteLine("Enter the New City: ");
+                                per.City = Console.ReadLine();
+                                break;
+                            case 5:
+                                Console.WriteLine("Enter the New State: ");
+                                per.State = Console.ReadLine();
+                                break;
+                            case 6:
+                                Console.WriteLine("Enter the New Zip Code: ");
+                                per.ZipCode = Console.ReadLine();
+                                break;
+                            case 7:
+                                Console.WriteLine("Enter the New Phone Number: ");
+                                per.PhoneNumber = Console.ReadLine();
+                                break;
+                            case 8:
+                                Console.WriteLine("Enter the New Email ID: ");
+                                per.Email = Console.ReadLine();
+                                break;
+                            case 9:
+                                return;
+                        }
+
+                    }
+                }
+            }
+        }
+     
         public static void ListingPeople()
         {
             if (Person.Count == 0)

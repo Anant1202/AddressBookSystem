@@ -8,6 +8,7 @@ namespace AddressBook
         {
             Console.WriteLine("Welcome to Address Book Program");
             AddressBook.AddDetails.GetUserInfo();
+            AddressBook.AddDetails.EditInfo();
             AddressBook.AddDetails.ListingPeople();
             //InputDetails ob1 = new InputDetails();
             //ob1.Details();
