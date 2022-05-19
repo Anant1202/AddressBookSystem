@@ -34,18 +34,19 @@ namespace AddressBook
             Console.Write("Enter EmailId: ");
             string Email = Console.ReadLine();
 
-            List<string> Person = new List<string>();
-            Person.Add(firstName);
-            Person.Add(lastName);
-            Person.Add(city);
-            Person.Add(state);
-            Person.Add(zipCode);
-            Person.Add(phoneNumber);
-            Person.Add(Email);
-            foreach (string element in Person)
-            {
-                Console.WriteLine(element);
-            }
+
+            //List<string> Person = new List<string>();
+            //Person.Add(firstName);
+            //Person.Add(lastName);
+            //Person.Add(city);
+            //Person.Add(state);
+            //Person.Add(zipCode);
+            //Person.Add(phoneNumber);
+            //Person.Add(Email);
+            //foreach (string element in Person)
+            //{
+            //    Console.WriteLine(element);
+            //}
         }
     }
 }
