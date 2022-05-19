@@ -10,6 +10,9 @@ namespace AddressBook
             AddressBook.AddDetails.GetUserInfo();
             AddressBook.AddDetails.EditInfo();
             AddressBook.AddDetails.ListingPeople();
+            AddressBook.AddDetails.DeleteInfo();
+            AddressBook.AddDetails.ListingPeople();
+
             //InputDetails ob1 = new InputDetails();
             //ob1.Details();
         }

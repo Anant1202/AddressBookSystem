@@ -48,6 +48,8 @@ namespace AddressBook
 
             Console.Write("Enter Email Id: ");
             per.Email = Console.ReadLine();
+
+            //Add is used to add the information
             Person.Add(per);
         }
         public static void PrintDetails(User per)
@@ -125,7 +127,25 @@ namespace AddressBook
                 }
             }
         }
-     
+        public static void DeleteInfo()
+        {
+            Console.WriteLine("Enter the first name of the person you would like to remove.");
+            string Delete = Console.ReadLine();
+            foreach (var per in Person)
+            {
+                if (per.FirstName== Delete)
+                {
+                    //Remove is used to Remove or delete the information
+                    Person.Remove(per);
+                    Console.WriteLine("Contact is deleted");
+                }
+                else
+                {
+                    Console.WriteLine("Contact is not present");
+                }
+            }
+        }
+
         public static void ListingPeople()
         {
             if (Person.Count == 0)
