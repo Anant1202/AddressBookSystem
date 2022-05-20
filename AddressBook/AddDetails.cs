@@ -52,7 +52,9 @@ namespace AddressBook
             //Add is used to add the information
             Person.Add(per);
         }
-        public static void PrintDetails(User per)
+    
+
+            public static void PrintDetails(User per)
         {
             Console.WriteLine("First Name: " + per.FirstName);
             Console.WriteLine("Last Name: " + per.LastName);
@@ -66,7 +68,7 @@ namespace AddressBook
         }
         public static void EditInfo()
         {
-            Console.WriteLine("Enter the contact to modify:");
+            Console.WriteLine("Enter the first name of the person you would like to modify:");
             string edit = Console.ReadLine();
             foreach (var per in Person)
             {
@@ -138,10 +140,12 @@ namespace AddressBook
                     //Remove is used to Remove or delete the information
                     Person.Remove(per);
                     Console.WriteLine("Contact is deleted");
+                    return;
                 }
                 else
                 {
                     Console.WriteLine("Contact is not present");
+                    return;
                 }
             }
         }
