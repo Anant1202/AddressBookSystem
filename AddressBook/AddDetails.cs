@@ -23,34 +23,38 @@ namespace AddressBook
         }
         public static void GetUserInfo()
         {
-            User per = new User();
+            for (int i=0;i<2;i++)
+            {
+                User per = new User();
 
-            Console.Write("Enter First Name: ");
-            per.FirstName = Console.ReadLine();
+                Console.Write("Enter First Name: ");
+                per.FirstName = Console.ReadLine();
 
-            Console.Write("Enter Last Name: ");
-            per.LastName = Console.ReadLine();
+                Console.Write("Enter Last Name: ");
+                per.LastName = Console.ReadLine();
 
-            Console.Write("Enter Address : ");
-            per.Address = Console.ReadLine();
+                Console.Write("Enter Address : ");
+                per.Address = Console.ReadLine();
 
-            Console.Write("Enter City : ");
-            per.City = Console.ReadLine();
+                Console.Write("Enter City : ");
+                per.City = Console.ReadLine();
 
-            Console.Write("Enter State : ");
-            per.State = Console.ReadLine();
+                Console.Write("Enter State : ");
+                per.State = Console.ReadLine();
 
-            Console.Write("Enter Phone Number : ");
-            per.PhoneNumber = Console.ReadLine();
+                Console.Write("Enter Phone Number : ");
+                per.PhoneNumber = Console.ReadLine();
 
-            Console.Write("Enter ZipCode: ");
-            per.ZipCode = Console.ReadLine();
+                Console.Write("Enter ZipCode: ");
+                per.ZipCode = Console.ReadLine();
 
-            Console.Write("Enter Email Id: ");
-            per.Email = Console.ReadLine();
+                Console.Write("Enter Email Id: ");
+                per.Email = Console.ReadLine();
 
-            //Add is used to add the information
-            Person.Add(per);
+                //Add is used to add the information
+                Person.Add(per);
+            }
+            
         }
     
 
