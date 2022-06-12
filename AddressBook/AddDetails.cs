@@ -8,71 +8,79 @@ namespace AddressBook
 {
     public interface IAddressBook
     {
-        void GetUserInfo();
+        //void GetUserInfo();
         void ListingPeople();
         void DeleteInfo();
     }
     public class AddDetails : IAddressBook
     {
-        public LinkedList<User> people;
+        public static Dictionary<string, List<AddDetails>> City = new Dictionary<string, List<AddDetails>>();
+        public static Dictionary<string, List<AddDetails>> State = new Dictionary<string, List<AddDetails>>();
+        public List<AddDetails> stateList;
+        public List<AddDetails> cityList;
+        public List<AddDetails> people;
         public AddDetails()
         {
-            people = new LinkedList<User>();
+            people = new List<AddDetails>();
         }
-        public class User
+        public string firstName;
+        public string lastName;
+        public string address;
+        public string city;
+        public string state;
+        public string zipCode;
+        public string phoneNum;
+        public string emailId;
+        public AddDetails(string firstName, string lastName, string address, string city, string state, string zip, string phoneNumber, string email)
         {
-            public string FirstName { get; set; }
-            public string LastName { get; set; }
-            public string PhoneNumber { get; set; }
-            public string Addresses { get; set; }
-            public string City { get; set; }
-            public string State { get; set; }
-            public string ZipCode { get; set; }
-            public string PhoneNum { get; set; }
-            public string EmailId { get; set; }
+            this.firstName = firstName;
+            this.lastName = lastName;
+            this.address = address;
+            this.city = city;
+            this.state = state;
+            this.zipCode = zip;
+            this.phoneNum = phoneNumber;
+            this.emailId = email;
+
         }
-        //Getting details from the user 
-        public void GetUserInfo()
+        //Getting the user details
+        public void GetUserInfo(string firstName, string lastName, string phoneNum, string address, string city, string state, string zipCode, string emailId)
         {
-            User per = new User();
-            Console.Write("Enter First Name: ");
-            per.FirstName = Console.ReadLine();
 
-            Console.Write("Enter Last Name: ");
-            per.LastName = Console.ReadLine();
-
-            Console.Write("Enter Address : ");
-            per.Addresses = Console.ReadLine();
-
-            Console.Write("Enter City : ");
-            per.City = Console.ReadLine();
-
-            Console.Write("Enter State : ");
-            per.State = Console.ReadLine();
-
-            Console.Write("Enter ZipCode: ");
-            per.ZipCode = Console.ReadLine();
-
-            Console.Write("Enter Phone Number: ");
-            per.PhoneNum = Console.ReadLine();
-
-            Console.Write("Enter EmailId: ");
-            per.EmailId = Console.ReadLine();
-
-            people.AddLast(per);
+            AddDetails person = new AddDetails(firstName, lastName, phoneNum, address, city, state, zipCode, emailId);
+            if (people.Count == 0)
+            {
+                people.Add(person);
+            }
+            else
+            {
+                AddDetails people = this.people.Find(a => a.firstName.Equals(firstName));
+                if (people == null)
+                {
+                    AddDetails p = new AddDetails(firstName, lastName, address, city, state, phoneNum, zipCode, emailId);
+                    this.people.Add(p);
+                }
+                else
+                {
+                    Console.WriteLine("-------Record is already exists-------");
+                    Console.WriteLine("Modify the details which has duplicate name");
+                    EditInfo();
+                }
+            }
         }
-        //Printing the details
-        public void PrintDetails(User per)
+
+
+        //Print the details
+        public void PrintCustomer(AddDetails person)
         {
-            Console.WriteLine("First Name: " + per.FirstName);
-            Console.WriteLine("Last Name: " + per.LastName);
-            Console.WriteLine("Phone Number: " + per.PhoneNumber);
-            Console.WriteLine("Address : " + per.Addresses);
-            Console.WriteLine("City : " + per.City);
-            Console.WriteLine("State : " + per.State);
-            Console.WriteLine("ZipCode : " + per.ZipCode);
-            Console.WriteLine("Phone Number: " + per.PhoneNum);
-            Console.WriteLine("Email Id: " + per.EmailId);
+            Console.WriteLine("First Name: " + person.firstName);
+            Console.WriteLine("Last Name: " + person.lastName);
+            Console.WriteLine("Phone Number: " + person.phoneNum);
+            Console.WriteLine("Address : " + person.address);
+            Console.WriteLine("City : " + person.city);
+            Console.WriteLine("State : " + person.state);
+            Console.WriteLine("ZipCode : " + person.zipCode);
+            Console.WriteLine("Email Id: " + person.emailId);
             Console.WriteLine("-------------------------------------------");
         }
         //Modify the details
@@ -80,11 +88,11 @@ namespace AddressBook
         {
             if (people.Count != 0)
             {
-                Console.WriteLine("Enter the first name of the user contact to modify:");
+                Console.WriteLine("Enter the contact to modify:");
                 string Modified = Console.ReadLine();
                 foreach (var person in people)
                 {
-                    if (person.FirstName.ToUpper() == Modified.ToUpper())
+                    if (person.firstName.ToUpper() == Modified.ToUpper())
                     {
                         while (true)
                         {
@@ -97,36 +105,36 @@ namespace AddressBook
                             Console.WriteLine("Enter 6 to Change State ");
                             Console.WriteLine("Enter 7 to Change Pincode ");
                             Console.WriteLine("Enter 8 to Exit ");
-                            int option = Convert.ToInt32(Console.ReadLine());
-                            switch (option)
+                            int Check = Convert.ToInt32(Console.ReadLine());
+                            switch (Check)
                             {
                                 case 1:
                                     Console.WriteLine("Enter the New First Name: ");
-                                    person.FirstName = Console.ReadLine();
+                                    person.firstName = Console.ReadLine();
                                     break;
                                 case 2:
                                     Console.WriteLine("Enter the New Last Name: ");
-                                    person.LastName = Console.ReadLine();
+                                    person.lastName = Console.ReadLine();
                                     break;
                                 case 3:
                                     Console.WriteLine("Enter the New Phone Number: ");
-                                    person.PhoneNum = Console.ReadLine();
+                                    person.phoneNum = Console.ReadLine();
                                     break;
                                 case 4:
                                     Console.WriteLine("Enter the New Address: ");
-                                    person.Addresses = Console.ReadLine();
+                                    person.address = Console.ReadLine();
                                     break;
                                 case 5:
                                     Console.WriteLine("Enter the New City: ");
-                                    person.City = Console.ReadLine();
+                                    person.city = Console.ReadLine();
                                     break;
                                 case 6:
                                     Console.WriteLine("Enter the New State: ");
-                                    person.State = Console.ReadLine();
+                                    person.state = Console.ReadLine();
                                     break;
                                 case 7:
                                     Console.WriteLine("Enter the New Pin Code: ");
-                                    person.ZipCode = Console.ReadLine();
+                                    person.zipCode = Console.ReadLine();
                                     break;
                                 case 8:
                                     return;
@@ -158,34 +166,52 @@ namespace AddressBook
             Console.WriteLine("Here are the current people in your address book:\n");
             foreach (var person in people)
             {
-                PrintDetails(person);
+                PrintCustomer(person);
             }
             return;
-            Console.WriteLine("\nPress any key to continue.");
+            //Console.WriteLine("\nPress any key to continue.");
 
-            Console.ReadKey();
+            //Console.ReadKey();
 
         }
         //Removing the field using Lambda Function
         public void DeleteInfo()
         {
-            Console.WriteLine("Enter the first name of the user you would like to remove.");
+            Console.WriteLine("Enter the first name of the person you would like to remove.");
             string firstName = Console.ReadLine();
-            User person = people.FirstOrDefault(x => x.FirstName.ToUpper() == firstName.ToUpper());
+            AddDetails person = people.FirstOrDefault(x => x.firstName.ToUpper() == firstName.ToUpper());
             if (person == null)
             {
                 Console.WriteLine("That person could not be found..");
 
                 return;
             }
-            Console.WriteLine("Are you sure you want to remove this user from your address book? (Y/N)");
-            //  PrintDetails(per);
+            Console.WriteLine("Are you sure you want to remove this person from your address book? (Y/N)");
+            //  PrintCustomer(person);
 
             if (Console.ReadKey().Key == ConsoleKey.Y)
             {
                 people.Remove(person);
                 Console.WriteLine("\nPerson removed ");
 
+            }
+        }
+        //Display Person names found in given City
+        public static void StoreCityList(string key, List<AddDetails> cityList, string city)
+        {
+            List<AddDetails> CityList = cityList.FindAll(a => a.city.ToLower() == city);
+            foreach (var i in CityList)
+            {
+                Console.WriteLine("Found person \"{0}\" in Address Book \"{1}\" , residing in City {2}", i.firstName, key, i.city);
+            }
+        }
+        //Display Person names found in given State
+        public static void StoreStateList(string key, List<AddDetails> stateList, string state)
+        {
+            List<AddDetails> StateList = stateList.FindAll(x => x.state.ToLower() == state);
+            foreach (var i in StateList)
+            {
+                Console.WriteLine("Found person \"{0}\" in Address Book \"{1}\" , residing in State {2}", i.firstName, key, i.state);
             }
         }
     }
