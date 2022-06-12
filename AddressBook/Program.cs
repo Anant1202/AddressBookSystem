@@ -75,6 +75,9 @@ namespace AddressBook
                         Console.WriteLine("Enter 2-To Search a person through a State");
                         Console.WriteLine("Enter 3-To view a person by state list or city list");
                         Console.WriteLine("Enter 4-Sort Contact People");
+                        Console.WriteLine("Enter 5-Sort based on city");
+                        Console.WriteLine("Enter 6-Sort based on State");
+                        Console.WriteLine("Enter 7-Sort based on zipcode");
                         int opt = Convert.ToInt32(Console.ReadLine());
                         switch (opt)
                         {
@@ -90,6 +93,15 @@ namespace AddressBook
                                 break;
                             case 4:
                                 AddDetails.Sorting(addressBook);
+                                break;
+                            case 5:
+                                AddDetails.SortBasedOnCity(addressBook);
+                                break;
+                            case 6:
+                                AddDetails.SortBasedOnState(addressBook);
+                                break;
+                            case 7:
+                                AddDetails.SortBasedOnZipCode(addressBook);
                                 break;
                             default:
                                 Console.WriteLine("Invalid Option!");

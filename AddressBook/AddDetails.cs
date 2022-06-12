@@ -40,7 +40,11 @@ namespace AddressBook
             this.zipCode = zip;
             this.phoneNum = phoneNumber;
             this.emailId = email;
-
+        }
+        //ToString Method-Used for printing the details
+        public override string ToString()
+        {
+            return "FirstName: " + this.firstName + " Last Name: " + this.lastName + " Address: " + this.address + "  City: " + this.city + " State: " + this.state + " Pincode: " + this.zipCode + " Phone Number: " + this.phoneNum + " Email Id: " + this.emailId;
         }
         //Getting the user details
         public void GetUserInfo(string firstName, string lastName, string phoneNum, string address, string city, string state, string zipCode, string emailId)
@@ -298,6 +302,61 @@ namespace AddressBook
                 foreach (var member in element.Value)
                 {
                     sorted.Add(member.firstName, member);
+                }
+                foreach (var member in sorted)
+                {
+                    Console.WriteLine(member.Value.ToString());
+                }
+            }
+        }
+        //Sort based on city name
+        public static void SortBasedOnCity(Dictionary<string, List<AddDetails>> addressBook)
+        {
+
+            SortedList<string, AddDetails> sorted;
+            foreach (KeyValuePair<string, List<AddDetails>> kvp in addressBook)
+            {
+                Console.WriteLine("\n--------Displaying Sorted contact based on city  in address book: {0}-------\n", kvp.Key);
+                sorted = new SortedList<string, AddDetails>();
+                foreach (var member in kvp.Value)
+                {
+                    sorted.Add(member.city, member);
+                }
+                foreach (var member in sorted)
+                {
+                    Console.WriteLine(member.Value.ToString());
+                }
+            }
+        }
+        //Sort based on State name
+        public static void SortBasedOnState(Dictionary<string, List<AddDetails>> addressBook)
+        {
+            SortedList<string, AddDetails> sorted;
+            foreach (KeyValuePair<string, List<AddDetails>> kvp in addressBook)
+            {
+                Console.WriteLine("\n--------Displaying Sorted contact based on State  in address book: {0}-------\n", kvp.Key);
+                sorted = new SortedList<string, AddDetails>();
+                foreach (var member in kvp.Value)
+                {
+                    sorted.Add(member.state, member);
+                }
+                foreach (var member in sorted)
+                {
+                    Console.WriteLine(member.Value.ToString());
+                }
+            }
+        }
+        //Sort based on zipcode
+        public static void SortBasedOnZipCode(Dictionary<string, List<AddDetails>> addressBook)
+        {
+            SortedList<string, AddDetails> sorted;
+            foreach (KeyValuePair<string, List<AddDetails>> kvp in addressBook)
+            {
+                Console.WriteLine("\n--------Displaying Sorted contact based on State  in address book: {0}-------\n", kvp.Key);
+                sorted = new SortedList<string, AddDetails>();
+                foreach (var member in kvp.Value)
+                {
+                    sorted.Add(member.zipCode, member);
                 }
                 foreach (var member in sorted)
                 {
