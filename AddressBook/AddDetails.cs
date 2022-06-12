@@ -288,5 +288,22 @@ namespace AddressBook
             }
 
         }
+        public static void Sorting(Dictionary<string, List<AddDetails>> addressBook)
+        {
+            SortedList<string, AddDetails> sorted;
+            foreach (KeyValuePair<string, List<AddDetails>> element in addressBook)
+            {
+                Console.WriteLine("\n--------Displaying sorted Contact Person Details in address book: {0}-------\n", element.Key);
+                sorted = new SortedList<string, AddDetails>();
+                foreach (var member in element.Value)
+                {
+                    sorted.Add(member.firstName, member);
+                }
+                foreach (var member in sorted)
+                {
+                    Console.WriteLine(member.Value.ToString());
+                }
+            }
+        }
     }
 }
