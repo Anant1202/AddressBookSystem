@@ -214,5 +214,9 @@ namespace AddressBook
                 Console.WriteLine("Found person \"{0}\" in Address Book \"{1}\" , residing in State {2}", i.firstName, key, i.state);
             }
         }
+<<<<<<< HEAD
     }
+=======
+    }    
+>>>>>>> UC7_DuplicateEntry
 }
