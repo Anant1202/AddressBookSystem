@@ -16,20 +16,21 @@ namespace AddressBook
                 Console.WriteLine("4.Listing the Details");
                 Console.WriteLine("5.Exit");
                 Console.WriteLine("Enter your choice");
+                AddDetails obj = new AddDetails();
                 choice = Convert.ToInt32(Console.ReadLine());
                 switch (choice)
                 {
                     case 1:
-                        AddressBook.AddDetails.GetUserInfo();
+                        obj.GetUserInfo();
                         break;
                     case 2:
-                        AddressBook.AddDetails.EditInfo();
+                        obj.EditInfo();
                         break;
                     case 3:
-                        AddressBook.AddDetails.DeleteInfo();
+                        obj.DeleteInfo();
                         break;
                     case 4:
-                        AddressBook.AddDetails.ListingPeople();
+                        obj.ListingPeople();
                         break;
                     case 5:
                         return;
